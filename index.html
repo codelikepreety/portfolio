@@ -7,6 +7,15 @@
 <meta name="keywords" content="Anima Mishra, Full Stack Developer, NSEC, Kolkata, Node.js, React, MongoDB, Java, DSA, B.Tech CSE"/>
 <meta property="og:title" content="Anima Mishra | Full Stack Developer"/>
 <meta property="og:description" content="Final Year CSE student at NSEC Kolkata. Building real-world web applications. Open to internships & collaborations."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://animamishra.vercel.app/"/>
+<meta property="og:image" content="https://animamishra.vercel.app/myphoto.jpeg"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Anima Mishra | Full Stack Developer"/>
+<meta name="twitter:description" content="Final Year CSE student at NSEC Kolkata. Building real-world web applications. Open to internships &amp; collaborations."/>
+<meta name="twitter:image" content="https://animamishra.vercel.app/myphoto.jpeg"/>
+<link rel="canonical" href="https://animamishra.vercel.app/"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%236c63ff'/%3E%3Cstop offset='1' stop-color='%2300d4ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23fff' text-anchor='middle'%3EAM%3C/text%3E%3C/svg%3E"/>
 <title>Anima Mishra | Full Stack Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -46,24 +55,24 @@ section{padding:6rem 2rem;max-width:1200px;margin:0 auto;}
   font-family:var(--font-display);font-size:clamp(2.5rem,7vw,5rem);font-weight:800;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  opacity:0;animation:splashFadeIn .8s .3s forwards;
+  opacity:0;animation:splashFadeIn .5s .1s forwards;
   letter-spacing:-0.05em;
 }
 .splash-portfolio{
   font-family:var(--font-display);font-size:1.2rem;font-weight:500;
   color:var(--text2);letter-spacing:.12em;
-  opacity:0;animation:splashFadeIn .6s .85s forwards;
+  opacity:0;animation:splashFadeIn .4s .3s forwards;
 }
 .splash-name{
   font-family:var(--font-display);font-size:1rem;font-weight:600;
   color:var(--white);letter-spacing:.16em;text-transform:uppercase;
-  opacity:0;animation:splashFadeIn .6s 1.35s forwards;
+  opacity:0;animation:splashFadeIn .4s .5s forwards;
 }
 .splash-bar{
   width:0;height:2px;
   background:linear-gradient(90deg,var(--accent),var(--accent2));
   border-radius:2px;
-  animation:splashBar 1s 1.8s forwards;
+  animation:splashBar .6s .6s forwards;
   max-width:200px;
 }
 @keyframes splashFadeIn{to{opacity:1;}}
@@ -320,59 +329,59 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
   border-top: 1px solid var(--glass-border);
 }
 
+/* Title on top; About text on the left, a compact anima.ts on the right.
+   On phones and tablets it stacks: title, code window, then the text. */
 .about-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-
-  /* Makes the whole About section wider */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 440px;
+  grid-template-areas:
+    "title title"
+    "text  code";
+  column-gap: 3rem;
+  row-gap: 1.5rem;
+  align-items: start;
   width: min(1100px, 100%);
   margin: 0 auto;
 }
 
+.about-grid > :first-child {
+  grid-area: title;
+}
+
 .about-code-wrap {
-  position: relative;
+  grid-area: code;
+  position: sticky;
+  top: 110px;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+}
+
+.about-code-wrap .code-body {
+  padding: 1.1rem 1.2rem;
+  font-size: .72rem;
+  line-height: 1.75;
 }
 
 .about-text-wrap {
+  grid-area: text;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
-.about-langs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .7rem;
-  margin: 1.6rem 0 0;
-  max-width: 1100px;
-}
-
-.lang-chip {
-  display: flex;
-  align-items: center;
-  gap: .45rem;
-  background: var(--glass);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--glass-border);
-  border-radius: 30px;
-  padding: .45rem .95rem;
-  font-family: var(--font-mono);
-  font-size: .78rem;
-  color: var(--text2);
-}
-
-.lang-chip .lang-name {
-  color: var(--text);
-  font-weight: 600;
-}
-
-.lang-chip .lang-level {
-  color: var(--text3);
-  font-size: .68rem;
+@media (max-width: 1000px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "code"
+      "text";
+  }
+  .about-code-wrap {
+    position: relative;
+    top: auto;
+    max-width: 440px;
+  }
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .about-text p {
@@ -396,7 +405,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
 
 .about-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -486,21 +495,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
   /* Prevent horizontal scrolling */
   overflow-x: hidden;
 
-  /* Allow long lines to wrap */
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  /* Long lines wrap between words, never mid-word */
+  overflow-wrap: break-word;
 }
 
+/* Each line reads as normal text; the line number sits in a fixed gutter
+   and a wrapped line stays indented under the code, not under the number. */
 .code-line {
-  display: flex;
-  gap: 1rem;
+  position: relative;
+  padding-left: 2.2rem;
   min-width: 0;
 }
 
 .code-num {
+  position: absolute;
+  left: 0;
+  width: 1.6rem;
   color: var(--text3);
-  min-width: 20px;
-  flex-shrink: 0;
   user-select: none;
 }
 
@@ -565,7 +576,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
 .project-card:hover .project-overlay{opacity:1;}
 .project-link-btn{width:44px;height:44px;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1rem;cursor:none;transition:all .2s;}
 .project-link-btn:hover{background:var(--accent);border-color:var(--accent);}
-.project-body{padding:1.5rem;}
+.project-body{padding:1.5rem;display:flex;flex-direction:column;flex:1;}
+.project-card:not(.featured){display:flex;flex-direction:column;}
+.project-footer{margin-top:auto;}
 .project-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.8rem;}
 .project-tag{padding:.15rem .5rem;font-family:var(--font-mono);font-size:.65rem;color:var(--accent);background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.2);border-radius:4px;}
 .project-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.5rem;}
@@ -695,7 +708,6 @@ footer span{color:var(--accent);}
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr;text-align:center;}
   .hero-right{display:none;}
-  .about-code-wrap{max-width:100%;}
   .contact-grid{grid-template-columns:1fr;}
   .coding-grid{grid-template-columns:1fr;}
   .project-card.featured{grid-template-columns:1fr;}
@@ -713,6 +725,36 @@ footer span{color:var(--accent);}
   .skills-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));}
   .achievements-grid{grid-template-columns:1fr;}
 }
+
+/* ─── BOLD OUTLINE ON HOVER / SELECT ───
+   A 2px glowing ring outside the 1px border, so the layout never shifts.
+   Hover with a mouse, Tab with a keyboard, or tap a card to select it. */
+.project-card,.achievement-card,.timeline-card,.skill-chip,.stat-card,.coding-stat-card,.contact-link-item,.lang-chip{transition:all .3s cubic-bezier(.16,1,.3,1);}
+.project-card:hover,.achievement-card:hover,.timeline-card:hover,.skill-chip:hover,.stat-card:hover,.coding-stat-card:hover,.contact-link-item:hover,.lang-chip:hover,
+.project-card:focus-within,.achievement-card:focus-within,.timeline-card:focus-within,.contact-link-item:focus-visible{
+  border-color:var(--accent2) !important;
+  box-shadow:0 0 0 2px var(--accent2),0 14px 40px rgba(0,212,255,.15) !important;
+}
+.project-card.is-selected,.achievement-card.is-selected,.timeline-card.is-selected,.skill-chip.is-selected,.stat-card.is-selected,.coding-stat-card.is-selected{
+  border-color:var(--accent) !important;
+  box-shadow:0 0 0 3px var(--accent),0 16px 48px rgba(108,99,255,.25) !important;
+}
+
+/* ─── ABOUT TEXT: paragraphs fade up one after another ─── */
+.about-text p{opacity:0;transform:translateY(18px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.about-text.visible p{opacity:1;transform:none;}
+.about-text.visible p:nth-child(1){transition-delay:.15s;}
+.about-text.visible p:nth-child(2){transition-delay:.45s;}
+.about-text.visible p:nth-child(3){transition-delay:.75s;}
+.about-text.visible p:nth-child(4){transition-delay:1.05s;}
+@media (prefers-reduced-motion:reduce){.about-text p{opacity:1;transform:none;transition:none;}}
+
+/* Custom cursor only with a mouse, and only once the script has started.
+   Everyone else (phones, tablets, script blocked) keeps the normal pointer. */
+#cursor-dot,#cursor-ring,#cursor-glow{display:none;}
+body.custom-cursor #cursor-dot,body.custom-cursor #cursor-ring,body.custom-cursor #cursor-glow{display:block;}
+body:not(.custom-cursor),body:not(.custom-cursor) *{cursor:revert !important;}
+body:not(.custom-cursor) button{cursor:pointer !important;}
 </style>
 </head>
 <body>
@@ -852,10 +894,10 @@ footer span{color:var(--accent);}
       <div class="hero-socials reveal reveal-delay-5">
         <span class="hero-social-label">FIND ME ON</span>
         <div class="hero-social-divider"></div>
-        <a href="https://github.com/codelikepreety" class="social-link" title="GitHub">
+        <a href="https://github.com/codelikepreety" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
-        <a href="https://linkedin.com/in/anima-mishra-bb519026b" class="social-link" title="LinkedIn">
+        <a href="https://linkedin.com/in/anima-mishra-bb519026b" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
       </div>
@@ -943,21 +985,17 @@ footer span{color:var(--accent);}
           <div class="code-line"><span class="code-num">3</span>&nbsp;&nbsp;<span class="prop">college</span>: <span class="str">"NSEC · Kolkata"</span>,</div>
           <div class="code-line"><span class="code-num">4</span>&nbsp;&nbsp;<span class="prop">degree</span>: <span class="str">"B.Tech CSE · 2023–2027"</span>,</div>
           <div class="code-line"><span class="code-num">5</span>&nbsp;&nbsp;<span class="prop">cgpa</span>: <span class="val">8.13</span>,</div>
-          <div class="code-line"><span class="code-num">6</span>&nbsp;&nbsp;<span class="prop">stack</span>: {</div>
-          <div class="code-line"><span class="code-num">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">languages</span>: [<span class="str">"Java"</span>,<span class="str">"Python"</span>,<span class="str">"JavaScript"</span>,<span class="str">"SQL"</span>,<span class="str">"C"</span>,<span class="str">"TypeScript"</span>],</div>
-          <div class="code-line"><span class="code-num">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">mlAndData</span>: [<span class="str">"Pandas"</span>,<span class="str">"NumPy"</span>,<span class="str">"Scikit-learn"</span>,<span class="str">"Matplotlib"</span>],</div>
-          <div class="code-line"><span class="code-num">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">frontend</span>: [<span class="str">"React.js"</span>,<span class="str">"HTML5"</span>,<span class="str">"CSS3"</span>,<span class="str">"Tailwind CSS"</span>],</div>
-          <div class="code-line"><span class="code-num">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">backend</span>: [<span class="str">"Node.js"</span>,<span class="str">"Express.js"</span>,<span class="str">"REST APIs"</span>,<span class="str">"FastAPI"</span>,<span class="str">"JWT Auth"</span>,<span class="str">"Mongoose"</span>],</div>
-          <div class="code-line"><span class="code-num">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">databases</span>: [<span class="str">"MongoDB"</span>,<span class="str">"MySQL"</span>],</div>
-          <div class="code-line"><span class="code-num">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">aiAndApis</span>: [<span class="str">"Google Gemini API"</span>,<span class="str">"TMDB API"</span>],</div>
-          <div class="code-line"><span class="code-num">13</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">toolsAndPlatforms</span>: [<span class="str">"Git"</span>,<span class="str">"GitHub"</span>,<span class="str">"Postman"</span>,<span class="str">"Hugging Face"</span>,<span class="str">"Streamlit"</span>,<span class="str">"Vercel"</span>,<span class="str">"Render"</span>,<span class="str">"VS Code"</span>]</div>
-          <div class="code-line"><span class="code-num">14</span>&nbsp;&nbsp;},</div>
-          <div class="code-line"><span class="code-num">15</span>&nbsp;&nbsp;<span class="prop">learning</span>: [<span class="str">"AI Integration"</span>,<span class="str">"Data Analytics"</span>,<span class="str">"Docker"</span>,<span class="str">"AWS"</span>],</div>
-          <div class="code-line"><span class="code-num">16</span>&nbsp;&nbsp;<span class="prop">openTo</span>: [<span class="str">"Internships"</span>,<span class="str">"Jobs"</span>,<span class="str">"Collabs"</span>],</div>
-          <div class="code-line"><span class="code-num">17</span>&nbsp;&nbsp;<span class="prop">contact</span>: <span class="str">"animamishra151@gmail.com"</span></div>
-          <div class="code-line"><span class="code-num">18</span>};</div>
-          <div class="code-line"><span class="code-num">19</span></div>
-          <div class="code-line"><span class="code-num">20</span><span class="cm">// Batch 2023–2027 · github.com/codelikepreety</span></div>
+          <div class="code-line"><span class="code-num">6</span>&nbsp;&nbsp;<span class="prop">speaks</span>: {</div>
+          <div class="code-line"><span class="code-num">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">hindi</span>: <span class="str">"Native"</span>,</div>
+          <div class="code-line"><span class="code-num">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">english</span>: <span class="str">"Fluent"</span>,</div>
+          <div class="code-line"><span class="code-num">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">bengali</span>: <span class="str">"Fluent"</span>,</div>
+          <div class="code-line"><span class="code-num">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">japanese</span>: <span class="str">"Learning"</span></div>
+          <div class="code-line"><span class="code-num">11</span>&nbsp;&nbsp;},</div>
+          <div class="code-line"><span class="code-num">12</span>&nbsp;&nbsp;<span class="prop">openTo</span>: [<span class="str">"Internships"</span>,<span class="str">"Jobs"</span>,<span class="str">"Collabs"</span>],</div>
+          <div class="code-line"><span class="code-num">13</span>&nbsp;&nbsp;<span class="prop">contact</span>: <span class="str">"animamishra151@gmail.com"</span></div>
+          <div class="code-line"><span class="code-num">14</span>};</div>
+          <div class="code-line"><span class="code-num">15</span></div>
+          <div class="code-line"><span class="code-num">16</span><span class="cm">// Batch 2023–2027 · github.com/codelikepreety</span></div>
         </div>
       </div>
     </div>
@@ -972,19 +1010,13 @@ footer span{color:var(--accent);}
       <div class="about-highlight reveal reveal-delay-3">
         "I actively solve coding problems, explore CS concepts, and continuously work on improving my technical and analytical skills."
       </div>
-      <div class="about-langs reveal reveal-delay-3">
-        <div class="lang-chip"><span class="lang-name">Hindi</span><span class="lang-level">Native</span></div>
-        <div class="lang-chip"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
-        <div class="lang-chip"><span class="lang-name">Bengali</span><span class="lang-level">Fluent</span></div>
-        <div class="lang-chip"><span class="lang-name">Japanese</span><span class="lang-level">Learning</span></div>
-      </div>
       <div class="about-stats reveal reveal-delay-4">
         <div class="stat-card">
           <div class="stat-num">8.13</div>
           <div class="stat-label">Current CGPA</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">15+</div>
+          <div class="stat-num">30+</div>
           <div class="stat-label">Technologies</div>
         </div>
         <div class="stat-card">
@@ -1031,6 +1063,7 @@ footer span{color:var(--accent);}
     <div class="skill-chip" data-cat="languages"><span class="skill-icon">🗄️</span><span class="skill-name">SQL</span><span class="skill-level">Intermediate</span></div>
     <div class="skill-chip" data-cat="languages"><span class="skill-icon">⚙️</span><span class="skill-name">C</span><span class="skill-level">Intermediate</span></div>
     <div class="skill-chip" data-cat="languages"><span class="skill-icon">🔷</span><span class="skill-name">TypeScript</span><span class="skill-level">Intermediate</span></div>
+    <div class="skill-chip" data-cat="languages"><span class="skill-icon">🧠</span><span class="skill-name">DSA (Java)</span><span class="skill-level">Advanced</span></div>
     <!-- ML & Data -->
     <div class="skill-chip" data-cat="ml"><span class="skill-icon">🐼</span><span class="skill-name">Pandas</span><span class="skill-level">Intermediate</span></div>
     <div class="skill-chip" data-cat="ml"><span class="skill-icon">🔢</span><span class="skill-name">NumPy</span><span class="skill-level">Intermediate</span></div>
@@ -1048,7 +1081,6 @@ footer span{color:var(--accent);}
     <div class="skill-chip" data-cat="backend"><span class="skill-icon">🚀</span><span class="skill-name">FastAPI</span><span class="skill-level">Intermediate</span></div>
     <div class="skill-chip" data-cat="backend"><span class="skill-icon">🔐</span><span class="skill-name">JWT Auth</span><span class="skill-level">Intermediate</span></div>
     <div class="skill-chip" data-cat="backend"><span class="skill-icon">🔗</span><span class="skill-name">Mongoose</span><span class="skill-level">Intermediate</span></div>
-    <div class="skill-chip" data-cat="backend"><span class="skill-icon">🧠</span><span class="skill-name">DSA (Java)</span><span class="skill-level">Advanced</span></div>
     <!-- Database -->
     <div class="skill-chip" data-cat="database"><span class="skill-icon">🍃</span><span class="skill-name">MongoDB</span><span class="skill-level">Advanced</span></div>
     <div class="skill-chip" data-cat="database"><span class="skill-icon">🐬</span><span class="skill-name">MySQL</span><span class="skill-level">Intermediate</span></div>
@@ -1095,7 +1127,7 @@ footer span{color:var(--accent);}
           <span class="project-tag">Render</span>
         </div>
         <div class="project-name">QuakeShield — ML-Based Earthquake Damage Prediction &amp; Analytics</div>
-        <div class="project-desc">Built a multi-class ML model to predict earthquake building damage levels using structural and geographic features from the DrivenData earthquake damage dataset. Developed a multi-class Random Forest model, performed EDA, categorical encoding, feature preprocessing, model evaluation, and hyperparameter tuning — optimizing the final model to a compact 72 MB for deployment. Deployed as a FastAPI REST API on Render, hosted the trained model privately on Hugging Face, and built a Streamlit interface for real-time predictions with class probabilities.</div>
+        <div class="project-desc">Predicts how badly a building will be damaged in an earthquake from its structural and geographic features (DrivenData dataset). I handled EDA, encoding and tuning for a multi-class Random Forest, compressed it to 72 MB, served it as a FastAPI API on Render with the model on Hugging Face, and built a Streamlit app for live predictions.</div>
         <div class="project-features">
           <span class="feature-pill">Multi-Class Random Forest</span>
           <span class="feature-pill">EDA + Feature Engineering</span>
@@ -1131,7 +1163,7 @@ footer span{color:var(--accent);}
           <span class="project-tag">Tailwind CSS</span>
         </div>
         <div class="project-name">Momentum AI — Intelligent Habit &amp; Progress Tracking Platform</div>
-        <div class="project-desc">A full-stack habit tracker with personalized AI insights and interactive progress analytics. Built with JWT-secured REST APIs to help users manage daily habits and monitor progress. Integrated the Gemini API to generate personalized habit suggestions and weekly summaries, with interactive analytics dashboards built using React.js and Recharts.</div>
+        <div class="project-desc">A full-stack habit tracker that helps people build daily habits and see their progress over time. JWT-secured REST APIs manage users and habits, the Gemini API writes personalized habit suggestions and weekly summaries, and a React dashboard built with Recharts turns daily check-ins into clear, interactive progress charts.</div>
         <div class="project-features">
           <span class="feature-pill">JWT-Secured REST APIs</span>
           <span class="feature-pill">Gemini AI Suggestions</span>
@@ -1164,7 +1196,7 @@ footer span{color:var(--accent);}
           <span class="project-tag">Razorpay</span>
         </div>
         <div class="project-name">FlashBooking — Full Stack Movie Ticket Booking Platform</div>
-        <div class="project-desc">A full-stack movie ticket booking platform with authentication, payments, and admin controls. Built REST APIs for movies, shows, bookings, and admin CRUD operations. Integrated the Razorpay payment gateway and Clerk authentication for secure bookings, with seat selection, booking history, and favorite movies features in a responsive React UI.</div>
+        <div class="project-desc">A full-stack movie ticket booking platform with seat selection, booking history and favorite movies. REST APIs power movies, shows, bookings and an admin CRUD panel, Clerk handles secure sign-in, and the Razorpay payment gateway processes payments — all inside a responsive React interface built for a smooth booking flow.</div>
         <div class="project-features">
           <span class="feature-pill">Razorpay Payments</span>
           <span class="feature-pill">Clerk Authentication</span>
@@ -1184,7 +1216,7 @@ footer span{color:var(--accent);}
         <img src="images/sonar-1.jpg" alt="Sonar Rock vs Mine Prediction interface" style="width:100%;height:100%;object-fit:cover;"/>
         <div class="project-overlay">
           <a href="https://sonar-rock-vs-mine-prediction.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="Live Demo">&#8599;</a>
-          <a href="https://github.com/codelikepreety/sonar-rock-vs-mine-prediction" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="GitHub">GH</a>
+          <a href="https://github.com/codelikepreety/sonar-rock-vs-mine-prediction" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
         </div>
       </div>
       <div class="project-body">
@@ -1195,7 +1227,7 @@ footer span{color:var(--accent);}
           <span class="project-tag">Streamlit</span>
         </div>
         <div class="project-name">Sonar Signal Classification — Rock vs Mine</div>
-        <div class="project-desc">A machine learning project using Logistic Regression to classify sonar signals as Rock (R) or Mine (M). Trained on the Sonar dataset with 60 numerical sonar measurements as features, a 10% test split, and random_state 1 — reaching 76.19% test accuracy on the saved training split.</div>
+        <div class="project-desc">A machine learning model that tells whether a sonar signal bounced off a rock or a mine. It uses Logistic Regression on the 60 numerical readings in the Sonar dataset, is trained with a 10% test split, reaches 76.19% test accuracy, and runs as a live Streamlit app for instant predictions.</div>
         <div class="project-features">
           <span class="feature-pill">60-Feature Sonar Dataset</span>
           <span class="feature-pill">Logistic Regression</span>
@@ -1204,7 +1236,7 @@ footer span{color:var(--accent);}
         </div>
         <div class="project-footer">
           <a href="https://sonar-rock-vs-mine-prediction.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-btn primary">&#8599; Live Demo</a>
-          <a href="https://github.com/codelikepreety/sonar-rock-vs-mine-prediction" target="_blank" rel="noopener noreferrer" class="project-btn">GitHub</a>
+          <a href="https://github.com/codelikepreety/sonar-rock-vs-mine-prediction" target="_blank" rel="noopener noreferrer" class="project-btn">⌥ GitHub</a>
         </div>
       </div>
     </div>
@@ -1224,7 +1256,7 @@ footer span{color:var(--accent);}
           <span class="project-tag">Research</span>
         </div>
         <div class="project-name">Breast Cancer Prediction — Final Year Research Project</div>
-        <div class="project-desc">Final-year research project applying machine learning classification techniques to breast cancer diagnosis prediction, carried out under the mentorship of Rajkumar Patra as part of the final-year capstone.</div>
+        <div class="project-desc">My final-year capstone research project, which I lead under the mentorship of Rajkumar Patra. We apply machine learning classification techniques to predict breast cancer diagnoses, and I'm responsible for the overall architecture, model development and coordinating our four-person team through each stage of the research.</div>
         <div class="project-features">
           <span class="feature-pill">ML Classification</span>
           <span class="feature-pill">Final Year Research</span>
@@ -1254,7 +1286,7 @@ footer span{color:var(--accent);}
           <span class="project-tag">Plotly</span>
         </div>
         <div class="project-name">AeroTwin — Aero Piston Engine Digital Twin (Phase 1 + Phase 2)</div>
-        <div class="project-desc">Phase 1: a physics-based digital twin of a MALE-UAV aero piston engine, driven by manually-entered operating parameters, with a React/Plotly dashboard and a threshold-based ("conventional, reactive") health-monitoring layer. Phase 2: a synthetic labeled dataset generated by running the Phase-1 physics twin under many fault scenarios, with three trained models layered on top — an anomaly detector, a fault classifier, and a Remaining-Useful-Life (RUL) regressor — replacing/augmenting the threshold system to predict degradation trends, estimate RUL, and compare live behavior against expected behavior.</div>
+        <div class="project-desc">A physics-based digital twin of a MALE-UAV aero piston engine. Phase 1 added a React/Plotly dashboard with threshold-based health monitoring. Phase 2 ran the twin through many fault scenarios to build a labeled dataset, then trained models for anomaly detection, fault classification and Remaining-Useful-Life prediction to spot degradation early.</div>
         <div class="project-features">
           <span class="feature-pill">Physics-Based Digital Twin</span>
           <span class="feature-pill">Anomaly Detection</span>
@@ -1263,7 +1295,7 @@ footer span{color:var(--accent);}
           <span class="feature-pill">React/Plotly Dashboard</span>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/Mr-Mysterious001/aerotwin" target="_blank" rel="noopener noreferrer" class="project-btn">⌥ GitHub</a>
+          <a href="https://github.com/Mr-Mysterious001/aerotwin" target="_blank" rel="noopener noreferrer" class="project-btn">⌥ Team Repo</a>
         </div>
       </div>
     </div>
@@ -1357,7 +1389,7 @@ footer span{color:var(--accent);}
       <div class="timeline-card">
         <div class="timeline-header">
           <div class="timeline-role">Final Year Research Project — Breast Cancer Prediction · Team Lead</div>
-          <div class="timeline-period">2024 — 2025</div>
+          <div class="timeline-period">2026 — Present</div>
         </div>
         <div class="timeline-org">Netaji Subhash Engineering College · Mentor: Rajkumar Patra</div>
         <div class="timeline-desc">Leading the final year capstone research project applying machine learning classification techniques to breast cancer diagnosis prediction. Team: Anima Mishra (Lead), Akshay Chandra, Ishan Saha, Ekta Dutta. Responsible for overall architecture, model development, and coordination with the team under faculty mentorship.</div>
@@ -1528,10 +1560,6 @@ footer span{color:var(--accent);}
           <span class="contact-link-icon">✉️</span>
           <div><div class="contact-link-label">EMAIL</div><div class="contact-link-val">animamishra151@gmail.com</div></div>
         </a>
-        <a href="tel:+918972176468" class="contact-link-item">
-          <span class="contact-link-icon">📞</span>
-          <div><div class="contact-link-label">PHONE</div><div class="contact-link-val">+91 89721 76468</div></div>
-        </a>
         <a href="https://linkedin.com/in/anima-mishra-bb519026b" target="_blank" class="contact-link-item">
           <span class="contact-link-icon">💼</span>
           <div><div class="contact-link-label">LINKEDIN</div><div class="contact-link-val">linkedin.com/in/anima-mishra-bb519026b</div></div>
@@ -1545,18 +1573,18 @@ footer span{color:var(--accent);}
 
     <div class="contact-form">
       <div class="form-group">
-        <label class="form-label">YOUR NAME</label>
+        <label class="form-label" for="f-name">YOUR NAME</label>
         <input type="text" class="form-input" id="f-name" placeholder="John Doe"/>
       </div>
       <div class="form-group">
-        <label class="form-label">EMAIL ADDRESS</label>
+        <label class="form-label" for="f-email">EMAIL ADDRESS</label>
         <input type="email" class="form-input" id="f-email" placeholder="john@company.com"/>
       </div>
       <div class="form-group">
-        <label class="form-label">MESSAGE</label>
+        <label class="form-label" for="f-msg">MESSAGE</label>
         <textarea class="form-textarea" id="f-msg" placeholder="Hi Anima, I wanted to discuss..."></textarea>
       </div>
-      <button class="form-submit" id="form-submit-btn" onclick="handleFormSubmit()">Send Message →</button>
+      <button class="form-submit" id="form-submit-btn" onclick="handleFormSubmit()">Send via Email →</button>
       <div class="form-status" id="form-status"></div>
     </div>
   </div>
@@ -1565,25 +1593,35 @@ footer span{color:var(--accent);}
 </main>
 
 <footer>
-  <p>Designed &amp; Built by <span>Anima Mishra</span> · B.Tech CSE · Netaji Subhash Engineering College, Kolkata · 2025</p>
+  <p>Designed &amp; Built by <span>Anima Mishra</span> · B.Tech CSE · Netaji Subhash Engineering College, Kolkata · <span id="footer-year">2026</span></p>
 </footer>
 
 <script>
 /* ── INTRO SPLASH ── */
-window.addEventListener('load',()=>{
-  const splash=document.getElementById('intro-splash');
+// Shows for about 1.3 seconds; a click, key, scroll or touch skips it.
+const splash=document.getElementById('intro-splash');
+let splashDone=false;
+function hideSplash(){
+  if(splashDone)return;
+  splashDone=true;
+  splash.classList.add('hide');
+  // Trigger hero reveals after splash fades
   setTimeout(()=>{
-    splash.classList.add('hide');
-    // Trigger hero reveals after splash fades
-    setTimeout(()=>{
-      document.querySelectorAll('#hero .reveal').forEach((el,i)=>{
-        setTimeout(()=>el.classList.add('visible'),i*180);
-      });
-    },300);
-  },3000);
-});
+    document.querySelectorAll('#hero .reveal').forEach((el,i)=>{
+      setTimeout(()=>el.classList.add('visible'),i*180);
+    });
+  },300);
+}
+window.addEventListener('DOMContentLoaded',()=>setTimeout(hideSplash,1300));
+['click','keydown','wheel','touchstart'].forEach(ev=>window.addEventListener(ev,hideSplash,{once:true,passive:true}));
+
+/* ── FOOTER YEAR ── */
+const footerYear=document.getElementById('footer-year');
+if(footerYear)footerYear.textContent=new Date().getFullYear();
 
 /* ── CURSOR ── */
+// Only with a mouse; phones and tablets keep their normal behaviour.
+if(window.matchMedia('(pointer:fine)').matches)document.body.classList.add('custom-cursor');
 const dot=document.getElementById('cursor-dot'),ring=document.getElementById('cursor-ring'),glow=document.getElementById('cursor-glow');
 let mx=0,my=0,rx=0,ry=0,gx=0,gy=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
@@ -1724,7 +1762,7 @@ function typeWriter(){
   else{titleEl.textContent=cur.substring(0,cIdx-1);cIdx--;if(cIdx===0){del=false;tIdx=(tIdx+1)%titles.length;}}
   setTimeout(typeWriter,del?55:95);
 }
-setTimeout(typeWriter,2600);
+setTimeout(typeWriter,1600);
 
 /* ── MOBILE MENU ── */
 const ham=document.getElementById('hamburger'),mob=document.getElementById('mobile-menu');
@@ -1745,12 +1783,13 @@ function handleFormSubmit(){
   const status=document.getElementById('form-status'),btn=document.getElementById('form-submit-btn');
   if(!name||!email||!msg){status.textContent='⚠ Please fill in all fields.';status.className='form-status error';return;}
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){status.textContent='⚠ Please enter a valid email.';status.className='form-status error';return;}
-  btn.textContent='Sending...';btn.style.opacity='.7';
-  setTimeout(()=>{
-    status.textContent='✓ Message sent! I\'ll reply within 24 hours.';status.className='form-status success';
-    btn.textContent='Send Message →';btn.style.opacity='';
-    document.getElementById('f-name').value='';document.getElementById('f-email').value='';document.getElementById('f-msg').value='';
-  },1500);
+  // No server here, so open the visitor's email app with the message filled in.
+  // The fields are kept, so nothing is lost if they close it without sending.
+  const subject='Portfolio enquiry from '+name;
+  const body=msg+'\n\n— '+name+' ('+email+')';
+  window.location.href='mailto:animamishra151@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  status.textContent='✉ Opening your email app — press send there. No email app? Write to animamishra151@gmail.com';
+  status.className='form-status success';
 }
 
 /* ── PET BOT + FRIEND — click to cycle greetings ── */
@@ -1781,6 +1820,18 @@ if(petFriend){
     petFriend._t=setTimeout(()=>{petFriendSpeech.style.opacity='';petFriendSpeech.style.transform='';},1800);
   });
 }
+
+/* ── SELECT A CARD ── */
+// Tap or click a card to keep it outlined; tap it again (or another card) to move the outline.
+const selectable='.project-card,.achievement-card,.timeline-card,.skill-chip,.stat-card,.coding-stat-card';
+document.querySelectorAll(selectable).forEach(card=>{
+  card.addEventListener('click',e=>{
+    if(e.target.closest('a'))return; // links still just open
+    const wasSelected=card.classList.contains('is-selected');
+    document.querySelectorAll(selectable).forEach(c=>c.classList.remove('is-selected'));
+    if(!wasSelected)card.classList.add('is-selected');
+  });
+});
 
 /* ── ACTIVE NAV ON SCROLL ── */
 const secs=document.querySelectorAll('section[id],div[id="hero"]');
