@@ -4,7 +4,7 @@ My personal portfolio: projects, skills, achievements and how to reach me.
 
 **Live:** https://animamishra.vercel.app
 
-![Portfolio preview](images/quakeshield-1.jpg)
+![Portfolio preview](images/portfolioimage.png)
 
 ## What's inside
 
